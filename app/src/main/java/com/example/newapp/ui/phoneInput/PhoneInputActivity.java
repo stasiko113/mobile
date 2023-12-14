@@ -9,11 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.newapp.R;
+import com.example.newapp.ui.finishRegistration.FinishRestrationActivity;
 import com.example.newapp.ui.emailInput.emailInputActivity;
 import com.example.newapp.utils.SharedPreferencesUtils;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
 
 import java.util.Objects;
 
@@ -36,22 +35,10 @@ public class PhoneInputActivity extends AppCompatActivity {
 
         String phoneNumber = Objects.requireNonNull(editTextPhoneNumber.getText()).toString().trim();
 
-        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
         buttonNextPhone.setOnClickListener(v -> {
-            openNextActivity(emailInputActivity.class);
-            SharedPreferencesUtils.saveString(this, "email", Objects.requireNonNull(editTextPhoneNumber.getText()).toString());
+            SharedPreferencesUtils.saveString(this, "phoneNumber", phoneNumber);
+            openNextActivity(FinishRestrationActivity.class);
         });
-        try {
-            Phonenumber.PhoneNumber parsedPhoneNumber = phoneNumberUtil.parse(phoneNumber, "BEL");
-            boolean isValid = phoneNumberUtil.isValidNumber(parsedPhoneNumber);
-
-            if (isValid) {
-                String formattedPhoneNumber = phoneNumberUtil.format(parsedPhoneNumber, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL);
-                // Используйте formattedPhoneNumber по вашему усмотрению
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void openNextActivity(Class<?> targetActivity) {

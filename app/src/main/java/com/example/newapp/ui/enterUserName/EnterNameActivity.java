@@ -51,6 +51,7 @@ public class EnterNameActivity extends AppCompatActivity {
             String username = enterUserName.getText().toString();
             if (validateUsername(username)) {
                 SharedPreferencesUtils.saveString(this, "username", enterUserName.getText().toString());
+                SharedPreferencesUtils.saveString(this, "role", "parent");
                 checkUserExistenceAndShowMessage();
                 openNextActivity();
             } else {
@@ -62,6 +63,7 @@ public class EnterNameActivity extends AppCompatActivity {
             String username = enterUserName.getText().toString();
             if (validateUsername(username)) {
                 SharedPreferencesUtils.saveString(this, "username", enterUserName.getText().toString());
+                SharedPreferencesUtils.saveString(this, "role", "doctor");
                 checkUserExistenceAndShowMessage();
                 openNextActivity();
             } else {

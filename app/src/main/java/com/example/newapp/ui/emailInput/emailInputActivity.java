@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.newapp.R;
+import com.example.newapp.ui.finishRegistration.FinishRestrationActivity;
 import com.example.newapp.ui.phoneInput.PhoneInputActivity;
 import com.example.newapp.utils.SharedPreferencesUtils;
 import com.google.android.material.textfield.TextInputEditText;
@@ -30,8 +31,8 @@ public class emailInputActivity extends AppCompatActivity {
 
         textViewNumber.setOnClickListener(v -> openNextActivity(PhoneInputActivity.class));
         buttonNextEmail.setOnClickListener(v -> {
-            openNextActivity(emailInputActivity.class);
             SharedPreferencesUtils.saveString(this, "email", Objects.requireNonNull(editEmail.getText()).toString());
+            openNextActivity(FinishRestrationActivity.class);
         });
 
         imageViewClear.setOnClickListener(view -> Objects.requireNonNull(editEmail.getText()).clear());

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 public class SharedPreferencesUtils {
 
-    private static final String PREFERENCES_USER_NAME = "user_name";
+    private static final String PREFERENCES_USER_NAME = "user";
 
     public static void saveString(Context context, String key, String value) {
         SharedPreferences preferences = context.getSharedPreferences(PREFERENCES_USER_NAME, Context.MODE_PRIVATE);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="your_values_array">
+        <item>Предпочитаю не указывать</item>
+        <item>Жещина</item>
+        <item>Мужчина</item>
+    </string-array>
+</resources>
