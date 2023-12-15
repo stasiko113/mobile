@@ -15,15 +15,15 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @GET("yourApiEndpoint")
+    @GET("users/profile")
     Call<UserModel> getUserData(@Query("id") int id);
 
-    @POST("login")
+    @POST("users/login")
     Call<LoginResponse> authenticate(@Body AuthRequest authRequest);
 
-    @POST("register")
+    @POST("users/registration")
     Call<RegistrationResponse> authenticate(@Body RegistrationModelWithPhone registrationModel);
 
-    @POST("register")
+    @POST("users/registration")
     Call<RegistrationResponse> authenticate(@Body RegistrationModelWithEmail registrationModel);
 }
