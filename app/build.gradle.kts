@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation("com.googlecode.libphonenumber:libphonenumber:8.12.35")
+    implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

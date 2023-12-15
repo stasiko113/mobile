@@ -19,6 +19,7 @@ import com.example.newapp.R;
 import com.example.newapp.model.RegistrationModelWithEmail;
 import com.example.newapp.model.RegistrationModelWithPhone;
 import com.example.newapp.model.RegistrationResponse;
+import com.example.newapp.model.UserModel;
 import com.example.newapp.network.ApiService;
 import com.example.newapp.ui.phoneInput.PhoneInputActivity;
 import com.example.newapp.ui.profile.ProfileActivity;
@@ -81,22 +82,24 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         String user_name = SharedPreferencesUtils.getString(this, "username", "");
-        String password = SharedPreferencesUtils.getString(this, "password", "");
-        String phone = SharedPreferencesUtils.getString(this, "phoneNumber", "");
-        String email = SharedPreferencesUtils.getString(this, "email", "");
-        String imageUrl = SharedPreferencesUtils.getString(this, "phoneNumber", "");
-        String role = SharedPreferencesUtils.getString(this, "role", "");
-        String userType = SharedPreferencesUtils.getString(this, "userType", "");
 
         editUserName.setText(user_name);
 
         imageView5.setOnClickListener(v -> {
+
+            String password = SharedPreferencesUtils.getString(this, "password", "");
+            String phone = SharedPreferencesUtils.getString(this, "phoneNumber", "");
+            String email = SharedPreferencesUtils.getString(this, "email", "");
+            String imageUrl = SharedPreferencesUtils.getString(this, "phoneNumber", "");
+            String role = SharedPreferencesUtils.getString(this, "role", "");
+            String userType = SharedPreferencesUtils.getString(this, "userType", "");
+
             /*if (Objects.equals(email, "")) {
                 authenticateUserWithPhone(name, user_name, password, phone, imageUrl, role, userType);
             } else {
                 authenticateUserWithEmail(name, user_name, password, email, imageUrl, role, userType);
             }*/
-            openNextActivity(MainActivity.class);
+            openNextActivity(ProfileActivity.class);
         });
     }
 
@@ -110,7 +113,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     RegistrationResponse registrationResponse = response.body();
 
-                    if ("Success".equals(registrationResponse.getStatus())) {
+                    if (registrationResponse != null) {
+                        UserModel user = registrationResponse.getUser();
+                        SharedPreferencesUtils.saveInt(EditProfileActivity.this, "id", user.getId());
                         startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
                         finish();
                     } else {
@@ -138,7 +143,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     RegistrationResponse registrationResponse = response.body();
 
-                    if ("Success".equals(registrationResponse.getStatus())) {
+                    if (registrationResponse != null) {
+                        UserModel user = registrationResponse.getUser();
+                        SharedPreferencesUtils.saveInt(EditProfileActivity.this, "id", user.getId());
                         startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
                         finish();
                     } else {

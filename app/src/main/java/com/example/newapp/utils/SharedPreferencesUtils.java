@@ -18,4 +18,16 @@ public class SharedPreferencesUtils {
         SharedPreferences preferences = context.getSharedPreferences(PREFERENCES_USER_NAME, Context.MODE_PRIVATE);
         return preferences.getString(key, defaultValue);
     }
+
+    public static void saveInt(Context context, String key ,int value) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFERENCES_USER_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(key, value);
+        editor.apply();
+    }
+
+    public static int getInt(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFERENCES_USER_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(key, 0);
+    }
 }

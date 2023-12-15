@@ -18,9 +18,11 @@ import com.example.newapp.MainActivity;
 import com.example.newapp.R;
 import com.example.newapp.model.AuthRequest;
 import com.example.newapp.model.LoginResponse;
+import com.example.newapp.model.UserModel;
 import com.example.newapp.network.ApiClient;
 import com.example.newapp.network.ApiService;
 import com.example.newapp.ui.profile.ProfileActivity;
+import com.example.newapp.utils.SharedPreferencesUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,12 +82,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     LoginResponse loginResponse = response.body();
 
-                    if ("Success".equals(loginResponse.getStatus())) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Неверные учетные данные", Toast.LENGTH_SHORT).show();
-                    }
+                    UserModel user = loginResponse.getUser();
+                    SharedPreferencesUtils.saveInt(LoginActivity.this, "id", user.getId());
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Ошибка при отправке запроса", Toast.LENGTH_SHORT).show();
                 }

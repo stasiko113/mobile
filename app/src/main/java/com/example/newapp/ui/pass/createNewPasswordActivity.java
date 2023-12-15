@@ -37,8 +37,8 @@ public class createNewPasswordActivity extends AppCompatActivity {
 
         button.setOnClickListener(v -> {
             String password = editText.getText().toString();
-            openNextActivity();
             SharedPreferencesUtils.saveString(createNewPasswordActivity.this, "password", password);
+            openNextActivity();
         });
 
         editText.addTextChangedListener(new TextWatcher() {

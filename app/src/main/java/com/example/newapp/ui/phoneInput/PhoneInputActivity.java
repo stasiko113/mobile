@@ -33,9 +33,9 @@ public class PhoneInputActivity extends AppCompatActivity {
 
         imageViewClear.setOnClickListener(view -> Objects.requireNonNull(editTextPhoneNumber.getText()).clear());
 
-        String phoneNumber = Objects.requireNonNull(editTextPhoneNumber.getText()).toString().trim();
 
         buttonNextPhone.setOnClickListener(v -> {
+            String phoneNumber = Objects.requireNonNull(editTextPhoneNumber.getText()).toString().trim();
             SharedPreferencesUtils.saveString(this, "phoneNumber", phoneNumber);
             openNextActivity(FinishRestrationActivity.class);
         });

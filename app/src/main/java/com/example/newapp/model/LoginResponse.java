@@ -1,9 +1,19 @@
 package com.example.newapp.model;
 
-public class LoginResponse {
-    private String status;
+import com.google.gson.annotations.SerializedName;
 
-    public String getStatus() {
-        return status;
+public class LoginResponse {
+    @SerializedName("user")
+    private UserModel user;
+
+    @SerializedName("token")
+    private String token;
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

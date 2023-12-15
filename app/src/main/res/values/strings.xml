@@ -14,4 +14,5 @@
     <string name="input_name">ВЫБЕРИТЕ ИМЯ ПОЛЬЗОВАТЕЛЯ</string>
     <string name="user_name_hint">Имя пользователя</string>
     <string name="add_number_or_email">ДОБАВЬТЕ НОМЕР ТЕЛЕФОНА ИЛИ ЭЛЕКТРОННЫЙ АДРЕС</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

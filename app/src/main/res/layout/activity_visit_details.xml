@@ -1,0 +1,59 @@
+<!-- res/layout/activity_visit_details.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewVisitDateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Врач: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewDoctorNameDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата: "
+        android:textSize="14sp"
+        android:layout_below="@id/textViewVisitDateDetails"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textViewAddressDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Адрес: "
+        android:textSize="14sp"
+        android:layout_below="@id/textViewDoctorNameDetails"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textViewReasonDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Причина: "
+        android:textSize="14sp"
+        android:layout_below="@id/textViewAddressDetails"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/buttonWriteToDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Написать врачу"
+        android:layout_below="@id/textViewReasonDetails"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonCancelAppointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Отменить прием"
+        android:layout_below="@id/buttonWriteToDoctor"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Добавьте другие элементы интерфейса, если необходимо -->
+</RelativeLayout>
