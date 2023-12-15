@@ -5,18 +5,5 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.newapp.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.newapp.ui.dashboard.DashboardFragment"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.newapp.ui.notifications.NotificationsFragment"
-        tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -2,7 +2,8 @@
 <resources>
     <string-array name="your_values_array">
         <item>Предпочитаю не указывать</item>
-        <item>Жещина</item>
-        <item>Мужчина</item>
+        <item>female</item>
+        <item>male</item>
     </string-array>
+
 </resources>

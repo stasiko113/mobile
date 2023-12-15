@@ -3,10 +3,10 @@ package com.example.newapp.model;
 import com.google.gson.annotations.SerializedName;
 
 public class RegistrationResponse {
-    @SerializedName("registrationSuccessful")
-    private boolean registrationSuccessful;
+    private String status;
 
-    public boolean isRegistrationSuccessful() {
-        return registrationSuccessful;
+    public String getStatus() {
+        return status;
     }
+
 }

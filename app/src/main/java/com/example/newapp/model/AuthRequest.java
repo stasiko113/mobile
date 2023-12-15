@@ -3,7 +3,7 @@ package com.example.newapp.model;
 import com.google.gson.annotations.SerializedName;
 
 public class AuthRequest {
-    @SerializedName("username")
+    @SerializedName("email")
     private String username;
 
     @SerializedName("password")
