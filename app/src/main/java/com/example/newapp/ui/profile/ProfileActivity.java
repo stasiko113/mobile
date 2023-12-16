@@ -13,16 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newapp.R;
 import com.example.newapp.model.ChildModel;
-import com.example.newapp.model.LoginResponse;
 import com.example.newapp.model.UserModel;
 import com.example.newapp.model.VisitToDoctorModel;
 import com.example.newapp.network.ApiClient;
 import com.example.newapp.network.ApiService;
-import com.example.newapp.ui.home.HomeActivity;
 import com.example.newapp.utils.SharedPreferencesUtils;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,8 +81,16 @@ public class ProfileActivity extends AppCompatActivity {
                                 ChildVisitAdapter childVisitAdapter = new ChildVisitAdapter(
                                         visitList,
                                         visit -> {
-                                            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
-                                            intent.putExtra("visit", (CharSequence) visit);
+                                            Intent intent = new Intent(ProfileActivity.this, VisitDetailsActivity.class);
+                                            intent.putExtra("visitId", visit.getId());
+                                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault());
+                                            intent.putExtra("visitDate", dateFormat.format(new Date(visit.getDate())));
+                                            intent.putExtra("visitReason", visit.getReason());
+                                            intent.putExtra("visitAddress", visit.getAddress());
+                                            intent.putExtra("doctorId", visit.getDoctor().getId());
+                                            intent.putExtra("doctorName", visit.getDoctor().getUser().getName());
+                                            intent.putExtra("doctorSpecialization", visit.getDoctor().getSpecialization());
+
                                             startActivity(intent);
                                         });
                                 recyclerViewChildren.setAdapter(childVisitAdapter);

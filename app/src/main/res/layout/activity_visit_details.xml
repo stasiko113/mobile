@@ -1,7 +1,9 @@
 <!-- res/layout/activity_visit_details.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/round_corners">
+
 
     <TextView
         android:id="@+id/textViewVisitDateDetails"
@@ -39,21 +41,30 @@
         android:layout_below="@id/textViewAddressDetails"
         android:layout_marginTop="8dp"/>
 
+    <TextView
+        android:id="@+id/textViewDoctorSpecialization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAddressDetails"
+        android:layout_marginTop="36dp"
+        android:text="Специализация: "
+        android:textSize="14sp" />
+
     <Button
         android:id="@+id/buttonWriteToDoctor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Написать врачу"
         android:layout_below="@id/textViewReasonDetails"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="38dp"
+        android:text="Написать врачу" />
 
     <Button
         android:id="@+id/buttonCancelAppointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Отменить прием"
         android:layout_below="@id/buttonWriteToDoctor"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:text="Отменить прием" />
 
     <!-- Добавьте другие элементы интерфейса, если необходимо -->
 </RelativeLayout>

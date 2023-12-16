@@ -9,7 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newapp.R;
-import com.example.newapp.model.VisitToDoctorModel;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class VisitDetailsActivity extends AppCompatActivity {
 
@@ -22,22 +25,44 @@ public class VisitDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_visit_details);
 
         // Получите данные из Intent
-        if (getIntent().hasExtra("visit")) {
-            VisitToDoctorModel visit = getIntent().getParcelableExtra("visit");
+        if (!getIntent().hasExtra("visitId")) {
+            Bundle extras = getIntent().getExtras();
+            String visitDate = String.valueOf(extras.getLong("visitDate"));
+            String visitReason = extras.getString("visitReason");
+            String visitAddress = extras.getString("visitAddress");
+            int doctorId = getIntent().getIntExtra("doctorId", 0);
+            String doctorName = extras.getString("doctorName");
+            String doctorSpecialization = extras.getString("doctorSpecialization");
 
-            if (visit != null) {
-                initializeData(visit);
+            if (visitDate != null) {
+                initializeData(visitDate, doctorName, visitReason, visitAddress, doctorSpecialization);
             }
         }
     }
 
-    private void initializeData(VisitToDoctorModel visit) {
-        TextView textViewVisitDateDetails = findViewById(R.id.textViewVisitDateDetails);
-        TextView textViewDoctorNameDetails = findViewById(R.id.textViewDoctorNameDetails);
+    private void initializeData(String visitDate, String visitDoctorName, String reason, String address, String specialization) {
+        try {
+            long timestamp = Long.parseLong(visitDate);
+            Date date = new Date(timestamp);
 
-        // Пример заполнения данных
-        textViewVisitDateDetails.setText("Дата: " + visit.getDate());
-        textViewDoctorNameDetails.setText("Врач: " + visit.getDoctor().getUser().getName());
-        // Добавьте остальные данные, если необходимо
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault());
+
+            String formattedDate = outputFormat.format(date);
+
+            TextView textViewVisitDateDetails = findViewById(R.id.textViewVisitDateDetails);
+            TextView textViewDoctorNameDetails = findViewById(R.id.textViewDoctorNameDetails);
+            TextView textViewVisitAddressDetails = findViewById(R.id.textViewAddressDetails);
+            TextView textViewReasonDetails = findViewById(R.id.textViewReasonDetails);
+            TextView textViewDoctorSpecialization = findViewById(R.id.textViewDoctorSpecialization);
+
+            textViewVisitDateDetails.setText("Дата: " + formattedDate);
+            textViewDoctorNameDetails.setText("Врач: " + visitDoctorName);
+            textViewVisitAddressDetails.setText("Адресс: " + address);
+            textViewReasonDetails.setText("Причина: " + reason);
+            textViewDoctorSpecialization.setText("Специализация: " + reason);
+
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 }

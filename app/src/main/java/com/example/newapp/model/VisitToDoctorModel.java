@@ -9,6 +9,12 @@ public class VisitToDoctorModel {
     @SerializedName("date")
     private long date;
 
+    @SerializedName("reason")
+    private String reason;
+
+    @SerializedName("address")
+    private String address;
+
     @SerializedName("doctor")
     private DoctorModel doctor;
 
@@ -20,6 +26,14 @@ public class VisitToDoctorModel {
 
     public long getDate() {
         return date;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getReason() {
+        return reason;
     }
 
     public DoctorModel getDoctor() {

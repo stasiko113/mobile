@@ -1,5 +1,6 @@
 package com.example.newapp.ui.profile;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.example.newapp.R;
 import com.example.newapp.model.VisitToDoctorModel;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,10 +39,17 @@ public class ChildVisitAdapter extends RecyclerView.Adapter<ChildVisitAdapter.Vi
     public void onBindViewHolder(@NonNull VisitViewHolder holder, int position) {
         if (visitList != null && !visitList.isEmpty()) {
             VisitToDoctorModel visit = visitList.get(position);
-            holder.textViewVisitDate.setText(dateFormat.format(visit.getDate()));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault());
+            holder.textViewVisitDate.setText(dateFormat.format(new Date(visit.getDate())));
+            holder.textViewDoctorName.setText(visit.getDoctor().getUser().getName());
 
             holder.itemView.setOnClickListener(view -> {
-                onItemClickListener.onItemClick(visit);
+                Intent intent = new Intent(view.getContext(), VisitDetailsActivity.class);
+                intent.putExtra("visitDate", visit.getDate());
+                intent.putExtra("doctorName", visit.getDoctor().getUser().getName());
+                intent.putExtra("visitAddress", visit.getAddress());
+                intent.putExtra("visitReason", visit.getReason());
+                view.getContext().startActivity(intent);
             });
         } else {
             holder.textViewVisitDate.setText("У вас нет детей");
