@@ -18,7 +18,6 @@ import com.example.newapp.model.VisitToDoctorModel;
 import com.example.newapp.network.ApiClient;
 import com.example.newapp.network.ApiService;
 import com.example.newapp.utils.SharedPreferencesUtils;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,8 +63,6 @@ public class ProfileActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     UserModel userModel = response.body();
                     if (userModel != null) {
-                        String imageUrl = userModel.getImageUrl();
-                        Picasso.get().load(imageUrl).into(imageViewProfile);
                         String name = userModel.getName();
                         textViewName.setText(name);
                         String username = userModel.getUsername();

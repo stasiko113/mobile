@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newapp.MainActivity;
 import com.example.newapp.R;
 import com.example.newapp.model.RegistrationModelWithEmail;
 import com.example.newapp.model.RegistrationModelWithPhone;
@@ -92,13 +91,13 @@ public class EditProfileActivity extends AppCompatActivity {
             String password = SharedPreferencesUtils.getString(this, "password", "");
             String phone = SharedPreferencesUtils.getString(this, "phoneNumber", "");
             String email = SharedPreferencesUtils.getString(this, "email", "");
-            String imageUrl = SharedPreferencesUtils.getString(this, "phoneNumber", "");
+            String imageUrl = SharedPreferencesUtils.getString(this, "imageUrl", "");
             String role = SharedPreferencesUtils.getString(this, "role", "");
             String userType = SharedPreferencesUtils.getString(this, "userType", "");
 
-            if (Objects.equals(email, "")) {
+            if (!Objects.equals(phone, "")) {
                 if (apiService != null) {
-                    authenticateUserWithEmail(name, user_name, password, email, imageUrl, role, userType);
+                    authenticateUserWithPhone(name, user_name, password, phone, imageUrl, role, userType);
                 } else {
                     Log.e("EditProfileActivity", "ApiService is null");
                     // Дополнительная обработка, если apiService равно null
@@ -117,7 +116,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void authenticateUserWithPhone(String name, String username, String password, String phone, String imageUrl, String role, String userType) {
         apiService = ApiClient.getApiService();
-        RegistrationModelWithPhone authRequest = new RegistrationModelWithPhone(name, username, password, phone, imageUrl, role, userType);
+        RegistrationModelWithPhone authRequest = new RegistrationModelWithPhone(name, username, password, phone, imageUrl, userType, role);
         Call<RegistrationResponse> call = apiService.authenticate(authRequest);
 
         call.enqueue(new Callback<RegistrationResponse>() {
@@ -130,7 +129,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         if (registrationResponse != null) {
                             UserModel user = registrationResponse.getUser();
                             SharedPreferencesUtils.saveInt(EditProfileActivity.this, "id", user.getId());
-                            startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
+                            startActivity(new Intent(EditProfileActivity.this, ProfileActivity.class));
                             finish();
                         } else {
                             Toast.makeText(EditProfileActivity.this, "Неверные учетные данные", Toast.LENGTH_SHORT).show();
