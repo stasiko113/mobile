@@ -4,55 +4,63 @@
     android:layout_height="match_parent"
     android:background="@drawable/round_corners">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textViewVisitDateDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:text="Врач: "
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:id="@+id/textViewDoctorNameDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Дата: "
-        android:textSize="14sp"
-        android:layout_below="@id/textViewVisitDateDetails"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:id="@+id/textViewAddressDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Адрес: "
-        android:textSize="14sp"
-        android:layout_below="@id/textViewDoctorNameDetails"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:id="@+id/textViewReasonDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Причина: "
-        android:textSize="14sp"
-        android:layout_below="@id/textViewAddressDetails"
-        android:layout_marginTop="8dp"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewDoctorSpecialization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewAddressDetails"
-        android:layout_marginTop="36dp"
+        android:layout_below="@id/textViewVisitDateDetails"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
         android:text="Специализация: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textViewDoctorNameDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDoctorSpecialization"
+        android:layout_marginTop="30dp"
+        android:text="Дата: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textViewAddressDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDoctorNameDetails"
+        android:layout_marginTop="20dp"
+        android:text="Адрес: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textViewReasonDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAddressDetails"
+        android:layout_marginTop="23dp"
+        android:text="Причина: "
         android:textSize="14sp" />
 
     <Button
         android:id="@+id/buttonWriteToDoctor"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewReasonDetails"
         android:layout_marginTop="38dp"
@@ -60,11 +68,12 @@
 
     <Button
         android:id="@+id/buttonCancelAppointment"
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonWriteToDoctor"
         android:layout_marginTop="8dp"
         android:text="Отменить прием" />
+
 
     <!-- Добавьте другие элементы интерфейса, если необходимо -->
 </RelativeLayout>
